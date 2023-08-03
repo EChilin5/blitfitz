@@ -1,7 +1,25 @@
+// Colors
+$color-primary: #55c57a;
+$color-primary-light: #0FF0B3 ;
+$color-primary-dark:  #036ed9;
+$color-light-purple: #CE9FFC;
+$color-dark-purple: #7367F0;
+
+$color-grey-light-1: #f7f7f7;
+
+$color-grey-dark: #777;
+$color-white: #fff;
+$color-black: #000;
+
 //font
-$default-font-size:1.6rem;
+$default-font-size:1.8rem;
 
 // Grid
 $grid-width:114rem;
 $gutter-vertical:8rem;
 $gutter-horizontal: 6rem;
+
+
+//background:linear-gradient(135deg, #0FF0B3 0%,#036ed9 100%);
+
+///background:linear-gradient(135deg, #CE9FFC 0%,#7367F0 100%);

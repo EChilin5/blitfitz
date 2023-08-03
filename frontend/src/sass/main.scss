@@ -1,9 +1,17 @@
 @import "abstracts/function";
-@import "abstracts/mixin";
+@import "abstracts/mixins";
 @import "abstracts/variable";
 
 
-@import "base/animations";
+@import "base/animation";
 @import "base/base";
 @import "base/typography";
 @import "base/utilities";
+
+
+@import "components/composition";
+
+@import "layout/grid";
+
+
+@import "pages/home";
