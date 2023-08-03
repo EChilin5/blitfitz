@@ -30,3 +30,27 @@
         transform: scale(.95);
     }
 }
+
+.resouce-group{
+    width: 100%;
+
+   
+}
+
+.col-1-of-3{
+
+    &:hover{
+        transform: scale(1.2);
+        zoom: 1;
+        color: $color-dark-purple;
+
+        &:not(.active){
+            transform: scale(.8);
+
+        }
+    }
+
+    // &a:hover:not(.active){
+    // }
+}
+
