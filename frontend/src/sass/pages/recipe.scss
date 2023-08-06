@@ -1,0 +1,48 @@
+.card{  
+    font-size: $default-font-size;
+    width: calc(100/3) *1rem;
+    margin-bottom: $gutter-horizontal;
+    
+    
+
+    &-title{
+        font-size: $default-font-size * 1.2;
+        font-weight: 700;
+        
+    }
+}
+
+.recipe-card-section{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5rem 5rem;
+
+}
+
+.recipe-card-individual{
+    flex-basis: 33%;
+}
+
+.main-recipe-card{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2rem 5rem;
+    margin: 2rem 5rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+    &-left{
+        flex-basis: 30%;
+        margin-right:$gutter-vertical ;
+        img{
+            width: 100%;
+        }
+    }
+    &-right{
+        flex-basis: 60%;
+        font-size: $default-font-size;
+
+        h3{
+            font-size: $default-font-size *1.4;
+        }
+    }
+}

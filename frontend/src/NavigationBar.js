@@ -4,6 +4,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import HomePage from "./pages/HomePage";
+import RecipePage from "./pages/RecipePage";
 
 const NavigationBar = () => {
   return (
@@ -11,18 +12,20 @@ const NavigationBar = () => {
       <Router>
         <Navbar bg="dark" data-bs-theme="dark">
           <Container>
-            <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+            <Navbar.Brand href="#home">Flittz Blittz</Navbar.Brand>
             <Nav className="me-auto">
               <Nav.Link as={Link} to={"/"}>
                 Home
               </Nav.Link>
-              <Nav.Link href="#features">Features</Nav.Link>
-              <Nav.Link href="#pricing">Pricing</Nav.Link>
+              <Nav.Link href="/dish">New Dish</Nav.Link>
+              <Nav.Link href="#pricing">Progress</Nav.Link>
+              <Nav.Link href="#pricing">Fit Planner</Nav.Link>
             </Nav>
           </Container>
         </Navbar>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/dish" element={<RecipePage />} />
         </Routes>
       </Router>
     </div>

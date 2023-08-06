@@ -3,8 +3,18 @@ body{
     font-weight: 400;
     /* font-size: 16px; */
     line-height: 1.7;
-    padding: 3rem;
+    // padding: 3rem;
  
+}
+
+
+.navbar{
+    font-size: $default-font-size;
+
+    &-brand{
+        font-size: $default-font-size*1.2;
+
+    }
 }
 
 .galleryheader{
