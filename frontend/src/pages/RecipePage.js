@@ -4,16 +4,12 @@ import MainRecipeCard from "../components/RecipeComponents/MainRecipeCard";
 import RecipeCard from "../components/RecipeComponents/RecipeCard";
 
 const RecipePage = () => {
-  const test = [1, 2, 3, 4, 5, 6];
+  const test = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   return (
-    <div>
+    <div className="recipe-section">
       <h1>Find A new Dish</h1>
-      <Form.Control
-        type="text"
-        id="inputPassword5"
-        aria-describedby="passwordHelpBlock"
-      />
+      <Form.Control type="text" id="inputPassword5" />
       <MainRecipeCard />
       <div className="recipe-card-section">
         {test.map((recipes) => {

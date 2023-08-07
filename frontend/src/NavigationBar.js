@@ -5,6 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import RecipePage from "./pages/RecipePage";
+import ProggressPage from "./pages/ProggressPage";
 
 const NavigationBar = () => {
   return (
@@ -18,7 +19,7 @@ const NavigationBar = () => {
                 Home
               </Nav.Link>
               <Nav.Link href="/dish">New Dish</Nav.Link>
-              <Nav.Link href="#pricing">Progress</Nav.Link>
+              <Nav.Link href="/progress">Progress</Nav.Link>
               <Nav.Link href="#pricing">Fit Planner</Nav.Link>
             </Nav>
           </Container>
@@ -26,6 +27,7 @@ const NavigationBar = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/dish" element={<RecipePage />} />
+          <Route path="/progress" element={<ProggressPage />} />
         </Routes>
       </Router>
     </div>
