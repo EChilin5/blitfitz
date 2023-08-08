@@ -21,3 +21,51 @@
         width:100% ;
     }
 }
+
+.meal-plan{
+    width: 50%;
+}
+
+.meal-plan-header{
+    margin-bottom: 3rem;
+    background-color: lightblue;
+    
+    h4{
+        display: inline;
+        font-size: $default-font-size;
+        border-bottom: 2px solid lightgrey;
+
+        
+        &:not(:last-child){
+            margin-right: $gutter-horizontal;
+        }
+        
+    }
+
+    .meal-plan-individual{
+        margin-top: 2rem;
+        margin-left: 5rem;
+        margin-bottom: 0.5rem;
+        border-bottom: 2px solid grey;
+
+        
+        
+        h5{
+            
+        display: inline;
+        &:not(:last-child){
+            margin-right:calc( #{$gutter-horizontal}/2);
+        }
+    }
+    }
+
+    
+    
+}
+
+.meal-plan-rows{
+    margin-bottom: 1.5rem;
+    text-align: right;
+   
+   
+}
