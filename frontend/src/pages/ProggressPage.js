@@ -4,6 +4,7 @@ import LineChart from "../components/ProgreesPageComponents/LineChart";
 import MealPlans from "../components/ProgreesPageComponents/MealPlans";
 
 const ProggressPage = () => {
+  const temp = [1, 2, 3, 4, 5, 6];
   return (
     <div>
       <div className="progress-section">
@@ -20,7 +21,13 @@ const ProggressPage = () => {
         </div>
       </div>
       <div className="progress-meals">
-        <MealPlans />
+        {temp.map((recipe) => {
+          return (
+            <div>
+              <MealPlans />
+            </div>
+          );
+        })}
       </div>
     </div>
   );

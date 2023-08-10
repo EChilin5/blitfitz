@@ -1,5 +1,5 @@
 .progress-section{
-    margin: 4rem 5rem ;
+    margin: 4rem 2.5rem ;
 }
 
 .progress-header{
@@ -21,51 +21,73 @@
         width:100% ;
     }
 }
+.progress-meals{
+    margin-bottom: 4rem;
+}
 
 .meal-plan{
-    width: 50%;
-}
+    margin: auto;
+  width: 50%;
+  
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+ 
 
-.meal-plan-header{
-    margin-bottom: 3rem;
-    background-color: lightblue;
-    
-    h4{
-        display: inline;
-        font-size: $default-font-size;
-        border-bottom: 2px solid lightgrey;
 
-        
-        &:not(:last-child){
-            margin-right: $gutter-horizontal;
-        }
-        
-    }
-
-    .meal-plan-individual{
-        margin-top: 2rem;
-        margin-left: 5rem;
-        margin-bottom: 0.5rem;
+    &-header{
+        padding: 1rem;
+        background-color: #023047;
+        color: $color-white;
+        text-align: right;
         border-bottom: 2px solid grey;
 
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
         
-        
-        h5{
+        h4{
+            display: inline;
+            font-size: $default-font-size;
+
             
-        display: inline;
-        &:not(:last-child){
-            margin-right:calc( #{$gutter-horizontal}/2);
+            &:not(:last-child){
+                margin-right: $gutter-horizontal;
+            }
         }
     }
-    }
 
+        &-individual{
+            padding-top: 1rem;
+            padding-left: 2rem;
+            margin-left: 10rem;
+            border-bottom: 2px solid grey;
+            background-color: #8ecae6;
+            color:$color-black;
+            box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     
-    
+            
+            
+            h5{
+                text-align: left;
+                display: inline;
+                font-size: $default-font-size;
+
+                &:not(:last-child){
+                    margin-right:calc( #{$gutter-horizontal}/2);
+                }
+            }
+        }    
 }
 
-.meal-plan-rows{
-    margin-bottom: 1.5rem;
-    text-align: right;
-   
-   
-}
+.arrow {
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    margin-left: 0.5rem;
+  }
+  .down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+  }
+  .up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+  }
