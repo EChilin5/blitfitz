@@ -11,13 +11,13 @@ const RecipeCard = (props) => {
     return num;
   };
 
-  const clickedSection = (id) => {
-    console.log(id);
+  const selectedCardNumber = (number) => {
+    props.selected(number);
   };
 
   return (
     <div>
-      <Card>
+      <Card onClick={() => selectedCardNumber(recipe.id)}>
         <Card.Img variant="top" src={recipe.image} />
         <Card.Body>
           <Card.Title className="u-center-text">{recipe.name}</Card.Title>

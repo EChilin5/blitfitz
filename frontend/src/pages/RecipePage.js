@@ -14,16 +14,17 @@ const RecipePage = () => {
   const [recipe, setrecipe] = useState([]);
   const [meal, setmeal] = useState([]);
   const [choice, setChoice] = useState("new-meal");
+  const [food, setFood] = useState("chicken");
+  const [mealName, setMealName] = useState("burger king");
+  const [cardNumber, setCardNumber] = useState(0);
 
   const handleChange = (val) => setValue(val);
   let api_key = process.env.REACT_APP_RECIPE_API;
   let api_id = process.env.REACT_APP_RECIP_API_ID;
-  let food = "chicken";
   let url = `https://api.edamam.com/api/recipes/v2?type=public&q=${food}&${api_id}&${api_key}`;
 
   let food_api = process.env.REACT_APP_FODD_API;
   let food_id = process.env.REACT_APP_FOOD_API_ID;
-  let mealName = "burger king";
   let food_url = `https://api.edamam.com/api/food-database/v2/parser?${food_id}&${food_api}&ingr=${mealName}&nutrition-type=cooking`;
 
   useEffect(() => {
@@ -81,7 +82,7 @@ const RecipePage = () => {
       return (
         <div className="recipe-card-individual" key={i++}>
           {" "}
-          <RecipeCard recipeInfo={recipes} />{" "}
+          <RecipeCard recipeInfo={recipes} selected={selectedCard} />{" "}
         </div>
       );
     });
@@ -92,26 +93,45 @@ const RecipePage = () => {
       // console.log(recipe);
       return (
         <div className="recipe-card-individual" key={j++}>
-          <FoodCard foodInfo={recipe} />
+          <FoodCard foodInfo={recipe} selected={selectedCard} />
         </div>
       );
     });
+  };
+
+  const selectedCard = (number) => {
+    console.log(number);
+    setCardNumber(number);
   };
 
   const handleMealDisplay = (mealDeclared) => {
     setChoice(mealDeclared);
   };
 
-  const handleSearchChange = (text) => {};
+  const handleSearchChange = (text) => {
+    setMealName(text);
+    setFood(text);
+    console.log(text);
+  };
 
-  const handleNewSearch = () => {};
+  const handleNewSearch = () => {
+    console.log("testing rwewrwr");
+    setmeal([]);
+    setrecipe([]);
+    fetchFoodData();
+    fetchRecipeData();
+  };
 
   return (
     <div className="recipe-section">
       <h1>Find A new Dish</h1>
       <div className="recipe-section-search">
-        <Form.Control type="text" id="inputPassword5" />
-        <Button onClick={() => handleNewSearch}>Submit</Button>
+        <Form.Control
+          type="text"
+          id="inputPassword5"
+          onChange={(e) => handleSearchChange(e.target.value)}
+        />
+        <Button onClick={() => handleNewSearch()}>Submit</Button>
       </div>
 
       <ToggleButtonGroup type="checkbox" value={value} onChange={handleChange}>
@@ -130,7 +150,13 @@ const RecipePage = () => {
           Dish Information{" "}
         </ToggleButton>
       </ToggleButtonGroup>
-      <MainRecipeCard />
+
+      {recipe.length === 0 ? (
+        ""
+      ) : (
+        <MainRecipeCard recipeInfo={recipe} recipeId={cardNumber} />
+      )}
+
       <div>
         {/* ///{console.log(meal.length)} */}
 

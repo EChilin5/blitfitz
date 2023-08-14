@@ -11,10 +11,14 @@ const FoodCard = (props) => {
     return num;
   };
 
+  const selectedCardNumber = (number) => {
+    props.selected(number);
+  };
+
   return (
     <div>
       {" "}
-      <Card>
+      <Card onClick={() => selectedCardNumber(food.id)}>
         <Card.Img
           variant="top"
           src={food.image ? food.image : temp_food_default}
