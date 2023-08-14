@@ -7,6 +7,7 @@ import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 import axios from "axios";
 import FoodCard from "../components/RecipeComponents/FoodCard";
 import Button from "react-bootstrap/esm/Button";
+import MainFoodCard from "../components/RecipeComponents/MainFoodCard";
 
 const RecipePage = () => {
   // const test = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -37,7 +38,7 @@ const RecipePage = () => {
 
   const fetchFoodData = () => {
     axios.get(food_url).then((res) => {
-      //console.log(res.data.hints);
+      // console.log(res.data.hints);
       for (var i = 0; i < res.data.hints.length; i++) {
         let food = res.data.hints[i].food;
         let foodDetails = {
@@ -46,7 +47,7 @@ const RecipePage = () => {
           calories: food.nutrients.ENERC_KCAL,
           nutrients: food.nutrients,
         };
-        // console.log(food);
+        //console.log(food);
         setmeal((prev) => {
           return [...prev, foodDetails];
         });
@@ -100,7 +101,7 @@ const RecipePage = () => {
   };
 
   const selectedCard = (number) => {
-    console.log(number);
+    // console.log(number);
     setCardNumber(number);
   };
 
@@ -111,11 +112,11 @@ const RecipePage = () => {
   const handleSearchChange = (text) => {
     setMealName(text);
     setFood(text);
-    console.log(text);
+    // console.log(text);
   };
 
   const handleNewSearch = () => {
-    console.log("testing rwewrwr");
+    // console.log("testing rwewrwr");
     setmeal([]);
     setrecipe([]);
     fetchFoodData();
@@ -124,49 +125,76 @@ const RecipePage = () => {
 
   return (
     <div className="recipe-section">
-      <h1>Find A new Dish</h1>
+      <h1>Recipe Hunter</h1>
+      <h4>
+        Look up recipes or look up nutrion facts of various restaurant meals
+      </h4>
       <div className="recipe-section-search">
         <Form.Control
           type="text"
           id="inputPassword5"
           onChange={(e) => handleSearchChange(e.target.value)}
         />
-        <Button onClick={() => handleNewSearch()}>Submit</Button>
+
+        <Button className="submit-form-btn" onClick={() => handleNewSearch()}>
+          Submit
+        </Button>
       </div>
 
-      <ToggleButtonGroup type="checkbox" value={value} onChange={handleChange}>
-        <ToggleButton
-          id="tbg-btn-1"
-          value={1}
-          onClick={() => handleMealDisplay(`new-meal`)}
+      <div className="toggle-btn-section">
+        <ToggleButtonGroup
+          type="checkbox"
+          value={value}
+          onChange={handleChange}
         >
-          New MEAL{" "}
-        </ToggleButton>
-        <ToggleButton
-          id="tbg-btn-2"
-          value={2}
-          onClick={() => handleMealDisplay(`dish-info`)}
-        >
-          Dish Information{" "}
-        </ToggleButton>
-      </ToggleButtonGroup>
-
-      {recipe.length === 0 ? (
-        ""
-      ) : (
-        <MainRecipeCard recipeInfo={recipe} recipeId={cardNumber} />
-      )}
+          <ToggleButton
+            id="tbg-btn-1"
+            className="togglebutton"
+            value={1}
+            onClick={() => handleMealDisplay(`new-meal`)}
+          >
+            Search New Recipe Mode
+          </ToggleButton>
+          <ToggleButton
+            id="tbg-btn-2"
+            className="togglebutton"
+            value={2}
+            onClick={() => handleMealDisplay(`dish-info`)}
+          >
+            Nutrition Facts
+          </ToggleButton>
+        </ToggleButtonGroup>
+      </div>
 
       <div>
         {/* ///{console.log(meal.length)} */}
 
         {choice === "new-meal" ? (
-          <div className="recipe-card-section">
-            {recipe.length === 0 ? "" : loadRecipeDetails()}{" "}
+          <div>
+            <div>
+              {" "}
+              {recipe.length === 0 ? (
+                ""
+              ) : (
+                <MainRecipeCard recipeInfo={recipe} recipeId={cardNumber} />
+              )}
+            </div>
+            <div className="recipe-card-section">
+              {recipe.length === 0 ? "" : loadRecipeDetails()}{" "}
+            </div>
           </div>
         ) : (
-          <div className="recipe-card-section">
-            {meal.length === 0 ? "rwdsada" : loadFoodDetails()}{" "}
+          <div>
+            <div>
+              {meal.length === 0 ? (
+                ""
+              ) : (
+                <MainFoodCard recipeInfo={meal} recipeId={cardNumber} />
+              )}
+            </div>
+            <div className="recipe-card-section">
+              {meal.length === 0 ? "rwdsada" : loadFoodDetails()}{" "}
+            </div>
           </div>
         )}
       </div>

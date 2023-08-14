@@ -16,7 +16,7 @@ const MainRecipeCard = (props) => {
 
           <div>
             {recipe.ingredients.map((meal) => {
-              console.log(meal.text);
+              // console.log(meal.text);
               return <div>{meal.text}</div>;
             })}
           </div>

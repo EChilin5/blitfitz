@@ -1,6 +1,6 @@
 .card{  
     font-size: $default-font-size;
-    width: calc(100/3) *1rem;
+    width: calc(100/4) *1rem;
     margin-bottom: $gutter-horizontal;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     
@@ -22,12 +22,26 @@
     background-color:$color-grey-light-1;
     padding: 2rem 5rem;
 
-    .form-control{
-        font-size: $default-font-size;
-        padding: 1.5rem;
-        margin-bottom: 2rem;
-        
+
+    &-search{
+        display: flex;
+        .form-control{
+            font-size: $default-font-size;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            width: 80%;
+            margin-right: 2rem;
+            height: 10vh;
+            
+         }
+         .btn{
+           display: inline-block;
+            font-size: $default-font-size;
+            width:18%;
+            height: 10vh;
+         }
     }
+    
 
 }
 
@@ -38,6 +52,7 @@
     flex-wrap: wrap;
     margin-bottom: 4rem;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: $color-white;
 
     &-left{
         flex-basis: 30%;
@@ -55,6 +70,7 @@
 
         h3{
             font-size: $default-font-size *1.4;
+            text-decoration: underline;
         }
     }
 }
@@ -66,9 +82,21 @@
 }
 
 .recipe-card-individual{
-    flex-basis: 33%;
+    flex-basis: 25%;
     &:hover{
         transform: scale(1.1);
     }
    
+}
+
+.toggle-btn-section{
+    display: flex;
+    justify-content: flex-end;
+    .btn{
+        font-size: $default-font-size;
+        :first-child{
+            border-right: 2px solid grey;
+        }
+    }
+    
 }
