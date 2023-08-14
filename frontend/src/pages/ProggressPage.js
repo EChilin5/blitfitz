@@ -20,7 +20,11 @@ const ProggressPage = () => {
           </div>
         </div>
       </div>
+
       <div className="progress-meals">
+        <h2>Meal History</h2>
+        <i class="bi bi-heart-fill"></i>
+
         {temp.map((recipe) => {
           return (
             <div>

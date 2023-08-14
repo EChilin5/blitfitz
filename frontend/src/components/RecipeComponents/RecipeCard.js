@@ -2,16 +2,28 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import natOne from "../../sass/img/nat-1-large.jpg";
 
-const RecipeCard = () => {
+const RecipeCard = (props) => {
+  let recipe = props.recipeInfo;
+
+  const round = (calories) => {
+    let num = Number(calories);
+    num = Math.round(calories);
+    return num;
+  };
+
+  const clickedSection = (id) => {
+    console.log(id);
+  };
+
   return (
     <div>
       <Card>
-        <Card.Img variant="top" src={natOne} />
+        <Card.Img variant="top" src={recipe.image} />
         <Card.Body>
-          <Card.Title className="u-center-text">Card Title</Card.Title>
+          <Card.Title className="u-center-text">{recipe.name}</Card.Title>
           <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
+            Calories: {round(recipe.calories)} <br />
+            Time: {recipe.time} <br />
           </Card.Text>
         </Card.Body>
       </Card>

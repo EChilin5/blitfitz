@@ -1,5 +1,10 @@
 .progress-section{
-    margin: 4rem 2.5rem ;
+    
+    padding: 4rem 2.5rem ;
+    height: 90vh;
+    margin-left: 2.5rem;
+    margin-right:2.5rem
+    
 }
 
 .progress-header{
@@ -23,6 +28,10 @@
 }
 .progress-meals{
     margin-bottom: 4rem;
+    h2{
+        text-align: center;
+        
+    }
 }
 
 .meal-plan{
