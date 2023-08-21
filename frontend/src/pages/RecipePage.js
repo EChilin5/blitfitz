@@ -11,6 +11,7 @@ import MainFoodCard from "../components/RecipeComponents/MainFoodCard";
 
 const RecipePage = () => {
   // const test = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const [displayModal, setDisplayModal] = useState(false);
   const [value, setValue] = useState([1, 3]);
   const [recipe, setrecipe] = useState([]);
   const [meal, setmeal] = useState([]);
