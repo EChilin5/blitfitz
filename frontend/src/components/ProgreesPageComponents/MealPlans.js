@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
-const MealPlans = () => {
+const MealPlans = (props) => {
   let temp = [1, 2, 3, 4, 5, 6];
+  let meals = props.food;
 
   const [arrowClick, setOnArrowClick] = useState(true);
 
@@ -10,8 +11,21 @@ const MealPlans = () => {
     setOnArrowClick(!arrowClick);
   };
 
+  const filterMealPlan = () => {
+    console.log("test");
+    const dates = ["2023-08-26", "2023-08-27", "2023-08-29"];
+    console.log(dates);
+    const filteredDates = dates.filter((d) => new Date(d) - new Date() > 0);
+    console.log(filteredDates);
+    filteredDates.map((day) => {
+      console.log(day);
+      return "";
+    });
+  };
+
   return (
     <div>
+      {filterMealPlan()}
       <div className="meal-plan">
         <div className="meal-plan-header">
           <h4>8/7/23</h4>

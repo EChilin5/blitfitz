@@ -30,6 +30,19 @@ const AddMealModal = (props) => {
   const selectedCard = (number) => {
     // console.log(number);
     setCardNumber(number);
+    console.log(meal[number]);
+    const today = new Date();
+
+    const month = today.getMonth() + 1;
+    const year = today.getFullYear();
+    const date = today.getDate();
+    const currentDate = month + "/" + date + "/" + year;
+    let foodInfo = {
+      name: meal[number].name,
+      calories: meal[number].nutrients.ENERC_KCAL,
+      date: currentDate,
+    };
+    console.log(foodInfo);
   };
 
   const loadFoodDetails = () => {

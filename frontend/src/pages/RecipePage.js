@@ -17,7 +17,9 @@ const RecipePage = () => {
   const [meal, setmeal] = useState([]);
   const [choice, setChoice] = useState("new-meal");
   const [food, setFood] = useState("chicken");
-  const [mealName, setMealName] = useState("burger king");
+  const [mealName, setMealName] = useState(
+    recipe.length === 0 ? "" : recipe[1]
+  );
   const [cardNumber, setCardNumber] = useState(0);
 
   const handleChange = (val) => setValue(val);
@@ -104,6 +106,7 @@ const RecipePage = () => {
   const selectedCard = (number) => {
     // console.log(number);
     setCardNumber(number);
+    setMealName(recipe[number]);
   };
 
   const handleMealDisplay = (mealDeclared) => {
@@ -133,7 +136,7 @@ const RecipePage = () => {
       <div className="recipe-section-search">
         <Form.Control
           type="text"
-          id="inputPassword5"
+          id="search-recipe"
           onChange={(e) => handleSearchChange(e.target.value)}
         />
 
@@ -194,7 +197,7 @@ const RecipePage = () => {
               )}
             </div>
             <div className="recipe-card-section">
-              {meal.length === 0 ? "rwdsada" : loadFoodDetails()}{" "}
+              {recipe.length === 0 ? "" : loadRecipeDetails()}{" "}
             </div>
           </div>
         )}
