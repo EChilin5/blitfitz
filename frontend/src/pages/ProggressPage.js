@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import natTwo from "../sass/img/nat-2-large.jpg";
 import LineChart from "../components/ProgreesPageComponents/LineChart";
 import MealPlans from "../components/ProgreesPageComponents/MealPlans";
@@ -8,36 +8,42 @@ import FoodCard from "../components/RecipeComponents/FoodCard";
 import UpdateWeightPhotoModal from "../components/ProgreesPageComponents/UpdateWeightPhotoModal";
 
 const ProggressPage = () => {
-  const meals = [
+  const dish = [
     {
       id: 1,
       name: "taco",
       calories: 1000,
-      date: "8/26/23",
+      date: "Fri Sep 01 2023",
     },
     {
       id: 2,
       name: "pizza",
       calories: 1000,
-      date: "8/27/23",
+      date: "Sat Sep 02 2023",
     },
     {
       id: 3,
       name: "cereal",
       calories: 1000,
-      date: "8/28/23",
+      date: "Sat Sep 02 2023",
     },
     {
       id: 4,
       name: "olive",
       calories: 1000,
-      date: "8/29/23",
+      date: "Sun Sep 03 2023",
     },
   ];
+
+  useEffect(() => {
+    uniqueDates();
+  }, []);
 
   const [displayFoodModal, setDisplayFoodModal] = useState(false);
   const [displayProgressUpdate, setDisplayProgressUpdate] = useState(false);
   const [savedImage, setSavedImage] = useState(natTwo);
+  const [sortedDate, setSortedDate] = useState([]);
+  const [meals, setMeals] = useState(dish);
 
   const showModal = () => {
     setDisplayFoodModal(!displayFoodModal);
@@ -48,11 +54,48 @@ const ProggressPage = () => {
   };
 
   const fetchLatestMeal = (meal) => {
-    console.log(meal);
+    let newMeal = {
+      id: meals.length,
+      name: meal.name,
+      calories: meal.calories,
+      date: meal.date,
+    };
+    console.log(newMeal);
+    setMeals((prevState) => {
+      return [...prevState, newMeal];
+    });
+    uniqueDates();
   };
 
   const updatePhoto = (photo) => {
     setSavedImage(photo);
+  };
+
+  const uniqueDates = () => {
+    setSortedDate([]);
+    let startDate = new Date();
+    startDate.setDate(startDate.getDate() - 11);
+    let today = new Date();
+    today.setDate(startDate.getDate() + 1);
+
+    const days = new Set();
+
+    while (startDate.toDateString() !== today.toDateString()) {
+      meals
+        .filter((meal) => meal.date === startDate.toDateString())
+        .map((dish) => {
+          days.add(dish.date);
+        });
+
+      startDate.setDate(startDate.getDate() + 1);
+      // console.log(startDate);
+    }
+    console.log(days.size);
+    days.forEach((value) => {
+      setSortedDate((prevState) => {
+        return [...prevState, value];
+      });
+    });
   };
 
   return (
@@ -70,7 +113,11 @@ const ProggressPage = () => {
           </div>
         </div>
 
-        <AddMealModal show={showModal} displayStatus={displayFoodModal} />
+        <AddMealModal
+          show={showModal}
+          displayStatus={displayFoodModal}
+          newMeal={fetchLatestMeal}
+        />
         <UpdateWeightPhotoModal
           show={showProgressModal}
           displayStatus={displayProgressUpdate}
@@ -95,7 +142,23 @@ const ProggressPage = () => {
       <div className="progress-meals">
         <h2>Meal History</h2>
         <i className="bi bi-heart-fill"></i>
-        <MealPlans food={meals} />
+        {/* {mealPlanfilter()} */}
+
+        {sortedDate.length === 0 ? (
+          "00000"
+        ) : (
+          <div>
+            {sortedDate.reverse().map((day) => {
+              return (
+                <div>
+                  <MealPlans food={meals} dateAte={day} />
+                </div>
+              );
+            })}
+          </div>
+        )}
+
+        {/* <MealPlans food={meals} /> */}
 
         {/* {meals.map((meal) => {
           return (

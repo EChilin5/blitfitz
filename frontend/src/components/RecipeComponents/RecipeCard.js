@@ -13,6 +13,7 @@ const RecipeCard = (props) => {
 
   const selectedCardNumber = (number) => {
     props.selected(number);
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
 
   return (

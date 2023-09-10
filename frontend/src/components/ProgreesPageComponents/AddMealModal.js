@@ -27,22 +27,27 @@ const AddMealModal = (props) => {
     fetchFoodData();
   };
 
+  const round = (calories) => {
+    let num = Number(calories);
+    num = Math.round(calories);
+    return num;
+  };
+
   const selectedCard = (number) => {
     // console.log(number);
     setCardNumber(number);
     console.log(meal[number]);
     const today = new Date();
+    let day = today.toDateString();
 
-    const month = today.getMonth() + 1;
-    const year = today.getFullYear();
-    const date = today.getDate();
-    const currentDate = month + "/" + date + "/" + year;
     let foodInfo = {
       name: meal[number].name,
-      calories: meal[number].nutrients.ENERC_KCAL,
-      date: currentDate,
+      calories: round(meal[number].nutrients.ENERC_KCAL),
+      date: day,
     };
     console.log(foodInfo);
+    props.newMeal(foodInfo);
+    closeCard();
   };
 
   const loadFoodDetails = () => {
