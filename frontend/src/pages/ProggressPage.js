@@ -74,7 +74,7 @@ const ProggressPage = () => {
   const uniqueDates = () => {
     setSortedDate([]);
     let startDate = new Date();
-    startDate.setDate(startDate.getDate() - 11);
+    startDate.setDate(startDate.getDate() - 40);
     let today = new Date();
     today.setDate(startDate.getDate() + 1);
 
