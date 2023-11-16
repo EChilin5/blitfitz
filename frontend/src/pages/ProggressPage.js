@@ -12,9 +12,10 @@ const ProggressPage = () => {
     {
       id: 1,
       name: "taco",
-      calories: 1000,
-      date: "Fri Sep 01 2023",
+      calories: 805,
+      date: "Thu Nov 16 2023",
     },
+
     {
       id: 2,
       name: "pizza",
@@ -33,6 +34,18 @@ const ProggressPage = () => {
       calories: 1000,
       date: "Sun Sep 03 2023",
     },
+    {
+      id: 5,
+      name: "sopa",
+      calories: 805,
+      date: "Thu Nov 16 2023",
+    },
+    {
+      id: 6,
+      name: "pizza",
+      calories: 805,
+      date: "Thu Nov 16 2023",
+    },
   ];
 
   useEffect(() => {
@@ -44,6 +57,8 @@ const ProggressPage = () => {
   const [savedImage, setSavedImage] = useState(natTwo);
   const [sortedDate, setSortedDate] = useState([]);
   const [meals, setMeals] = useState(dish);
+  let [totalCal, setTotalCal] = useState(0);
+  let todayCalories = 0;
 
   const showModal = () => {
     setDisplayFoodModal(!displayFoodModal);
@@ -74,9 +89,10 @@ const ProggressPage = () => {
   const uniqueDates = () => {
     setSortedDate([]);
     let startDate = new Date();
-    startDate.setDate(startDate.getDate() - 40);
+    startDate.setDate(startDate.getDate() - 300);
     let today = new Date();
-    today.setDate(startDate.getDate() + 1);
+    today.setDate(today.getDate() + 1);
+    console.log(today.toDateString());
 
     const days = new Set();
 
@@ -90,12 +106,27 @@ const ProggressPage = () => {
       startDate.setDate(startDate.getDate() + 1);
       // console.log(startDate);
     }
+
     console.log(days.size);
     days.forEach((value) => {
       setSortedDate((prevState) => {
         return [...prevState, value];
       });
     });
+  };
+
+  const getTodaysCal = () => {
+    let original = new Date();
+    let total = 0;
+    console.log("tewrw " + original.toDateString());
+    meals
+      .filter((meal) => meal.date === original.toDateString())
+      .map((cal) => {
+        console.log(cal.calories);
+        total += cal.calories;
+        console.log(todayCalories);
+      });
+    return total;
   };
 
   return (
@@ -130,12 +161,18 @@ const ProggressPage = () => {
           </div>
 
           <div className="progress-header-right">
-            <LineChart />
+            <div className="progress-header-right-btn">
+              <Button>Weight</Button>
+              <Button>Calories</Button>
+            </div>
+            <div className="progress-header-right-graph">
+              <LineChart />
+            </div>
           </div>
         </div>
         <div className="calories-progress">
           Today's Calories Total:
-          <span className="calorie-count">10000</span>
+          <span className="calorie-count">{getTodaysCal()}</span>
         </div>
       </div>
 
